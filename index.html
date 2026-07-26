@@ -133,7 +133,13 @@ animation:tremer .08s infinite;
 
 
 <body>
+<audio id="teclado" loop>
+    <source src="digitacao.mp3" type="audio/mpeg">
+</audio>
 
+<audio id="alarme">
+    <source src="alarme.mp3" type="audio/mpeg">
+</audio>
 
 <canvas id="matrix"></canvas>
 
@@ -257,6 +263,7 @@ let i=0;
 
 function escrever(){
 
+document.getElementById("teclado").play();
 
 if(i<mensagens.length){
 
@@ -280,8 +287,11 @@ setTimeout(()=>{
 
 document.getElementById("alerta").style.display="flex";
 
-document.body.classList.add("treme");
+document.getElementById("teclado").pause();
 
+document.getElementById("alarme").play();
+
+document.body.classList.add("treme");
 
 let n=10;
 
@@ -299,6 +309,27 @@ n--;
 if(n<0){
 
 clearInterval(intervalo);
+
+
+// ação quando o tempo acaba
+
+document.querySelector(".alerta").innerHTML=
+
+`
+
+<h1 style="color:red">
+⚠ ACESSO PERDIDO ⚠
+</h1>
+
+<h2>
+Seus dados foram comprometidos!
+</h2>
+
+<p>
+Conexão encerrada pelo sistema.
+</p>
+
+`;
 
 }
 
