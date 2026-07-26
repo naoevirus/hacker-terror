@@ -1,1 +1,1 @@
-<hacker terroe
+<hacker terror
